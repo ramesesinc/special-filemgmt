@@ -1,0 +1,30 @@
+import com.rameses.rcp.annotations.*;
+import com.rameses.filemgmt.*;
+
+public class FileLocationProviderImpl implements FileLocationProvider {
+
+    @Service('QueryService') 
+    def qrySvc; 
+    
+    public List getLocations() {
+        def list = null; 
+        try { 
+            def params = [ _schemaname: 'sys_fileloc', where:[' 1=1 ']]; 
+            list = qrySvc.getList( params ); 
+        } catch(Throwable t) {
+            list = []; 
+        } 
+
+        list.each{ o-> 
+            o.name = o.objid;
+            o.type = o.loctype; 
+            o.url = o.url;
+            o.readPath = o.url; 
+            o.writePath = o.filepath;
+            o.username = o.user?.name;
+            o.password = o.user?.pwd; 
+            o.defaulted = o.defaultloc.toString(); 
+        } 
+        return list;         
+    }
+} 

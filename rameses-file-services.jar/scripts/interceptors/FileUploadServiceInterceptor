@@ -1,0 +1,32 @@
+import com.rameses.annotations.*; 
+
+class FileUploadServiceInterceptor {
+	
+	@Service('DefaultFileUploadServiceImpl') 
+	def svc; 
+
+	@Before( pattern="FileUploadService.register" ) 
+	public void register( evt ) { 
+		def params = evt.args[0]; 
+		def o = svc.register( params ); 
+		if ( o ) params.putAll( o );  
+	} 
+
+	@After( pattern="FileUploadService.addItem" ) 
+	public void afterAddItem( evt ) { 
+		def params = evt.args[0]; 
+		svc.addItem( params ); 
+	} 
+
+	@After( pattern="FileUploadService.addItems" ) 
+	public void afterAddItems( evt ) { 
+		def params = evt.args[0]; 
+		svc.addItems( params ); 
+	} 	
+
+	@After( pattern="FileUploadService.removeFile" ) 
+	public void afterRemoveFile( evt ) { 
+		def params = evt.args[0]; 
+		svc.removeFile( params ); 
+	} 	
+}

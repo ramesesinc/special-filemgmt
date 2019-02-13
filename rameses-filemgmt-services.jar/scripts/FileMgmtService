@@ -1,0 +1,17 @@
+import com.rameses.annotations.*;
+
+class FileMgmtService {
+	
+	@DataContext('sys_file')
+	def sysfile_db;
+
+
+	@ProxyMethod 
+	public def read( params ) {
+		def o = sysfile_db.find([ objid: params.objid ]).select('objid').first(); 
+		if ( !o ) return null; 
+
+		return sysfile_db.find([ objid: params.objid ]).first(1);  
+	}
+
+}

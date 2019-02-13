@@ -1,0 +1,10 @@
+<workunit extends="com/rameses/seti2/templates/CrudForm.xml" 
+          schemaName="sys_file">
+    <invokers>
+        <invoker type="sys_file:create" caption="Attachment" target="popup"/>
+    </invokers>
+    <code class="com.rameses.filemgmt.models.FileNewModel" />
+    <pages>
+        <page template="com.rameses.filemgmt.views.FileNewPage" /> 
+    </pages>
+</workunit>

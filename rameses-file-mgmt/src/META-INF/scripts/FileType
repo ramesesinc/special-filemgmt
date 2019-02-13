@@ -1,0 +1,20 @@
+import com.rameses.rcp.annotations.*;
+import com.rameses.rcp.common.*;
+
+public class FileType {
+
+    final def _types = [ 
+        [ objid: "jpg",  title: "JPEG Images (*.jpg)", multiselect: true, image: true ],
+        [ objid: "png",  title: "PNG Images (*.png)", multiselect: true, image: true ],
+        [ objid: "pdf",  title: "PDF Document (*.pdf)", multiselect: true ],
+        [ objid: "doc",  title: "Word Document (*.doc)", multiselect: true ],
+        [ objid: "docx", title: "Word Document (*.docx)", multiselect: true ]
+    ];
+
+    public def getTypes() { return _types; } 
+
+    public def getType( name ) { 
+        def sid = name.toString().toLowerCase(); 
+        return _types.find{( it.objid == sid )} 
+    }
+}

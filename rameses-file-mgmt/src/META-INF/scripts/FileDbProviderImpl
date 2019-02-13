@@ -1,0 +1,21 @@
+import com.rameses.rcp.annotations.*;
+import com.rameses.rcp.common.*;
+import com.rameses.filemgmt.*;
+
+public class FileDbProviderImpl implements FileManager.DbProvider {
+    
+    @Service('FileUploadService') 
+    def fileUploadSvc;
+
+    @Service('FileMgmtService') 
+    def fileSvc; 
+
+    Map save( Map o ) { 
+        return fileUploadSvc.upload( o ); 
+    } 
+
+    Map read( Map params ) {
+        def m = [ objid: params.objid ]; 
+        return fileSvc.read( m ); 
+    } 
+} 

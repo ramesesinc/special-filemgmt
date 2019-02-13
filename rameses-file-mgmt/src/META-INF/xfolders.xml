@@ -1,0 +1,7 @@
+<folders>
+    <folder id="explorer">
+        <folder id="master" caption="Master">
+            <folder id="filemgmt" caption="File Mgmt" index="5"/>
+        </folder>
+    </folder>   
+</folders>

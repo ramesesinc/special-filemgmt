@@ -1,0 +1,11 @@
+<workunit>
+    <invokers>
+        <invoker type="sys_fileitem:open" caption="File Item Viewer" action="init" 
+                 target="popup" alwaysOnTop="true" width="389" height="366" />
+    </invokers>    
+    <code class="com.rameses.filemgmt.models.FileItemOpenModel" />
+    <pages>
+        <page template="com.rameses.filemgmt.views.FileItemLoadPage" /> 
+        <page name="view" template="com.rameses.filemgmt.views.FileItemViewPage" /> 
+    </pages>
+</workunit>
